@@ -1,4 +1,5 @@
-#include <iostream>
+
+#include "ex5.hpp"
 
 int	NOD(const int &a, const int &b)
 {
@@ -16,31 +17,6 @@ int	NOK(const int &a, const int &b)
 	return (a * b) / NOD(a, b);
 }
 
-class Fraction
-{
-private:
-	int		 	numerator;
-	int		 	denominator;
-	void		reduction();
-public:
-	// class ZeroDenominatorException : public std::exception
-	// {
-	// public:
-	// 	const char* what() const throw();
-	// };
-	Fraction			&operator+=(const Fraction &right);
-	Fraction			&operator-=(const Fraction &right);
-	Fraction			&operator*=(const Fraction &right);
-	Fraction			&operator/=(const Fraction &right);
-	Fraction			operator+(const Fraction &right) const;
-	Fraction			operator-(const Fraction &right) const;
-	Fraction			operator*(const Fraction &right) const;
-	Fraction			operator/(const Fraction &right) const;
-	friend std::ostream	&operator<<(std::ostream &out, const Fraction &frac);
-	Fraction(const int &a, const int &b);
-	Fraction(const Fraction &frac) : numerator(frac.numerator), denominator(frac.denominator)
-	{}
-};
 
 Fraction::Fraction(const int &a, const int &b) : numerator(a), denominator(b)
 {

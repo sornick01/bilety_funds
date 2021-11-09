@@ -5,20 +5,20 @@
 
 #include <iostream>
 
-template <class T>
-class Strategy
-{	
-public:
-	virtual int compare(const T &a, const T &b) const = 0;
-};
+// template <class T>
+// class Strategy
+// {	
+// public:
+// 	virtual int compare(const T &a, const T &b) const = 0;
+// };
 
-class Strategy_int final : public Strategy<int>
-{
-	virtual int compare(const int &a, const int &b) const override
-	{
-		return (a - b);
-	}
-};
+// class Strategy_int final : public Strategy<int>
+// {
+// 	virtual int compare(const int &a, const int &b) const override
+// 	{
+// 		return (a - b);
+// 	}
+// };
 
 template <class T>
 class	Node
