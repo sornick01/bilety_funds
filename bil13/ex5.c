@@ -24,7 +24,7 @@ t_poly	*new_node(int coeff, size_t pow)
 	return (new);
 }
 
-void	*push_back(t_poly **poly, t_poly *monom)
+void	push_back(t_poly **poly, t_poly *monom)
 {
 	t_poly	*tmp;
 
@@ -43,12 +43,14 @@ void	sorted_insert(t_poly **poly, t_poly *monom)
 {
 	t_poly	*tmp;
 
+	if (!monom)
+		return ;
 	if (!(*poly))
 	{
 		*poly = monom;
 		return ;
 	}
-	if (monom->pow > (*poly)->pow)
+	if (monom->pow > (*poly)->pow) //[x3]->[]->[]->[]
 	{
 		monom->next = (*poly);
 		*poly = monom;
@@ -59,9 +61,10 @@ void	sorted_insert(t_poly **poly, t_poly *monom)
 	{
 		tmp = tmp->next;
 	}
-	if (tmp->next->pow == monom->pow)
+	if (tmp->next && tmp->next->pow == monom->pow)
 	{
 		tmp->next->coeff += monom->coeff;
+		free(monom);
 	}
 	else
 	{
@@ -70,12 +73,49 @@ void	sorted_insert(t_poly **poly, t_poly *monom)
 	}
 }
 
-void sort()
-
-t_poly	*parse(char *pathname)
+void	print(t_poly *poly)
 {
-
+	printf("<");
+	while (poly)
+	{
+		if (poly->coeff > 0)
+		{
+			printf("+");
+		}
+		printf("%dx^%zu", poly->coeff, poly->pow);
+		poly = poly->next;
+	}
+	printf(">");
 }
 
+void	free_list(t_poly **list)
+{
+	t_poly	*tmp;
 
+	while (*list)
+	{
+		tmp = *list;
+		*list = (*list)->next;
+		free(tmp);
+	}
+}
+
+// void sort()
+
+// t_poly	*parse(char *pathname)
+// {
+
+// }
+
+int main()
+{
+	t_poly *list = NULL;
+	sorted_insert(&list, new_node(-9, 3));
+	sorted_insert(&list, new_node(-2, 2));
+	sorted_insert(&list, new_node(5, 1));
+	sorted_insert(&list, new_node(6, 4));
+	sorted_insert(&list, new_node(7, 3));
+	print(list);
+	free_list(&list);
+}
 
