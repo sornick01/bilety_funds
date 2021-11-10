@@ -50,6 +50,12 @@ void	sorted_insert(t_poly **poly, t_poly *monom)
 		*poly = monom;
 		return ;
 	}
+	if (monom->coeff == 0)
+	{
+		free(monom);
+		return ;
+
+	}
 	if (monom->pow > (*poly)->pow) //[x3]->[]->[]->[]
 	{
 		monom->next = (*poly);
@@ -76,36 +82,66 @@ void	sorted_insert(t_poly **poly, t_poly *monom)
 void	print(t_poly *poly)
 {
 	printf("<");
+	printf("%d", poly->coeff);
+	if (poly->pow != 0)
+	{
+		printf("x");
+		if (poly->pow > 1)
+			printf("^%zu", poly->pow);
+	}
+		poly = poly->next;
 	while (poly)
 	{
 		if (poly->coeff > 0)
 		{
 			printf("+");
 		}
-		printf("%dx^%zu", poly->coeff, poly->pow);
+		printf("%d", poly->coeff);
+		if (poly->pow != 0)
+		{
+			printf("x");
+			if (poly->pow > 1)
+				printf("^%zu", poly->pow);
+		}
 		poly = poly->next;
 	}
 	printf(">");
 }
 
-void	free_list(t_poly **list)
+
+
+void	free_list(t_poly *list)
 {
 	t_poly	*tmp;
 
-	while (*list)
+	while (list)
 	{
-		tmp = *list;
-		*list = (*list)->next;
+		tmp = list;
+		list = (list)->next;
 		free(tmp);
 	}
 }
 
-// void sort()
+t_poly	*parse_monom(FILE **file)
+{
+	if ()
+}
 
-// t_poly	*parse(char *pathname)
-// {
-
-// }
+t_poly	*parse_poly(const char *pathname)
+{
+	FILE	*file;
+	char	c;
+	if (file = fopen(pathname, "r") == NULL)
+	{
+		return NULL;
+	}
+	if (c = getc(file) != )
+	while (/* condition */)
+	{
+		/* code */
+	}
+	
+}
 
 int main()
 {
@@ -115,7 +151,9 @@ int main()
 	sorted_insert(&list, new_node(5, 1));
 	sorted_insert(&list, new_node(6, 4));
 	sorted_insert(&list, new_node(7, 3));
+	sorted_insert(&list, new_node(3, 0));
+	sorted_insert(&list, new_node(-3, 9));
 	print(list);
-	free_list(&list);
+	free_list(list);
 }
 
