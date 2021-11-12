@@ -128,6 +128,16 @@ bool		AVLTree<T>::find(const T &data)
 }
 
 
+template <class T>
+void		AVLTree<T>::delete_all_nodes(Node<T> *x)
+{
+	if (x)
+	{
+		delete_all_nodes(x->_left);
+		delete_all_nodes(x->_right);
+		delete x;
+	}
+}
 
 template <class T>
 Node<T>		*AVLTree<T>::find_min(Node<T> *x)

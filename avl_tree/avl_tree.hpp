@@ -22,8 +22,8 @@ class Node
 	Node(const T &data) : _left(nullptr), _right(nullptr), height(1), _data(data)
 	{}
 	~Node()
-	{}
-
+	{
+	}
 };
 
 template <class T>
@@ -46,9 +46,14 @@ private:
 	Node<T>		*find_min(Node<T> *node);
 	Node<T>		*remove(Node<T> *node, const T &data);
 	void		print(Node<T> *x, int i);
+	void		delete_all_nodes(Node<T> *x);
 public:
 	AVLTree() : _root(nullptr)
 	{}
+	~AVLTree() 
+	{
+		delete_all_nodes(this->_root);
+	}
 	void		del(const T &data);
 	bool		find(const T &data);
 	void		add(const T &data);
