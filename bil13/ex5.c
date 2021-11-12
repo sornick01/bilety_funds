@@ -122,26 +122,26 @@ void	free_list(t_poly *list)
 	}
 }
 
-t_poly	*parse_monom(FILE **file)
-{
-	if ()
-}
+// t_poly	*parse_monom(FILE *file)
+// {
+// 	if ()
+// }
 
-t_poly	*parse_poly(const char *pathname)
-{
-	FILE	*file;
-	char	c;
-	if (file = fopen(pathname, "r") == NULL)
-	{
-		return NULL;
-	}
-	if (c = getc(file) != )
-	while (/* condition */)
-	{
-		/* code */
-	}
+// t_poly	*parse_poly(const char *pathname)
+// {
+// 	FILE	*file;
+// 	char	c;
+// 	if (file = fopen(pathname, "r") == NULL)
+// 	{
+// 		return NULL;
+// 	}
+// 	if (c = getc(file) != )
+// 	while (/* condition */)
+// 	{
+// 		/* code */
+// 	}
 	
-}
+// }
 
 int main()
 {
