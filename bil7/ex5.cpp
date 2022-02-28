@@ -1,4 +1,4 @@
-
+//ok
 #include "ex5.hpp"
 
 int	NOD(const int &a, const int &b)
